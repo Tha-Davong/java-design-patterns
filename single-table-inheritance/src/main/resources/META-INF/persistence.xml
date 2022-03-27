@@ -2,6 +2,7 @@
 <persistence version="2.1"
              xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
              xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
+
     <persistence-unit name="AdvancedMapping">
 
         <class>com.ramesh.jpa.entities.Vehicle</class>
@@ -21,6 +22,9 @@
             <property name="hibernate.temp.use_jdbc_metadata_defaults" value="false"/>
             <property name="hibernate.format_sql" value="true"/>
             <property name="hibernate.use_sql_comments" value="true"/>
+            <property name="hibernate.connection.release_mode" value="after_transaction" />
+            <property name="hibernate.current_session_context_class" value="jta" />
+            <property name="connection.release_mode" value="auto"/>
 
         </properties>
 

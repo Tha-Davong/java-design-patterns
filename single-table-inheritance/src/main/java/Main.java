@@ -33,5 +33,8 @@ public class Main {
         em.persist(truck);
 
         transaction.commit();
+
+        em.close();
+        emf.close();
     }
 }
