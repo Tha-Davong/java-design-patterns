@@ -3,14 +3,14 @@ import javax.persistence.MappedSuperclass;
 @MappedSuperclass
 public abstract class PassengerVehicle extends Vehicle {
 
-    private int noOfpassengers;
+    private int noOfPassengers;
 
-    public int getNoOfpassengers() {
-        return noOfpassengers;
+    public int getNoOfPassengers() {
+        return noOfPassengers;
     }
 
-    public void setNoOfpassengers(int noOfpassengers) {
-        this.noOfpassengers = noOfpassengers;
+    public void setNoOfPassengers(int noOfPassengers) {
+        this.noOfPassengers = noOfPassengers;
     }
 
 }
