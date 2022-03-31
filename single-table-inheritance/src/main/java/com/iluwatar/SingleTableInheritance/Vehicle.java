@@ -1,3 +1,5 @@
+package com.iluwatar.SingleTableInheritance;
+
 import javax.persistence.DiscriminatorColumn;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;

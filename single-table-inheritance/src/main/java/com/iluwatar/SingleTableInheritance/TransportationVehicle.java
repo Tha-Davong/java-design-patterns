@@ -1,3 +1,5 @@
+package com.iluwatar.SingleTableInheritance;
+
 import javax.persistence.MappedSuperclass;
 
 @MappedSuperclass

@@ -1,3 +1,5 @@
+package com.iluwatar.SingleTableInheritance;
+
 import org.junit.Assert;
 import org.junit.Test;
 import javax.persistence.*;
@@ -23,10 +25,10 @@ public class SingleTableInheritanceTest {
         String type3 = list.get(2).getClass().getName();
         String type4 = list.get(3).getClass().getName();
 
-        Assert.assertEquals("Car", type1);
-        Assert.assertEquals("Train", type2);
-        Assert.assertEquals("Airplane", type3);
-        Assert.assertEquals("Ship", type4);
+        Assert.assertEquals("com.iluwatar.SingleTableInheritance.Car", type1);
+        Assert.assertEquals("com.iluwatar.SingleTableInheritance.Train", type2);
+        Assert.assertEquals("com.iluwatar.SingleTableInheritance.Airplane", type3);
+        Assert.assertEquals("com.iluwatar.SingleTableInheritance.Ship", type4);
     }
 
     @Test
@@ -117,8 +119,8 @@ public class SingleTableInheritanceTest {
         String type1 = list.get(0).getClass().getName();
         String type2 = list.get(1).getClass().getName();
 
-        Assert.assertEquals("Car", type1);
-        Assert.assertEquals("Train", type2);
+        Assert.assertEquals("com.iluwatar.SingleTableInheritance.Car", type1);
+        Assert.assertEquals("com.iluwatar.SingleTableInheritance.Train", type2);
     }
 
     @Test
@@ -133,8 +135,8 @@ public class SingleTableInheritanceTest {
         String type1 = list.get(0).getClass().getName();
         String type2 = list.get(1).getClass().getName();
 
-        Assert.assertEquals("Airplane", type1);
-        Assert.assertEquals("Ship", type2);
+        Assert.assertEquals("com.iluwatar.SingleTableInheritance.Airplane", type1);
+        Assert.assertEquals("com.iluwatar.SingleTableInheritance.Ship", type2);
     }
 
     @Test
@@ -149,8 +151,8 @@ public class SingleTableInheritanceTest {
         String type1 = list.get(0).getClass().getName();
         String type2 = list.get(1).getClass().getName();
 
-        Assert.assertEquals("Airplane", type1);
-        Assert.assertEquals("Ship", type2);
+        Assert.assertEquals("com.iluwatar.SingleTableInheritance.Airplane", type1);
+        Assert.assertEquals("com.iluwatar.SingleTableInheritance.Ship", type2);
     }
 
     @Test
@@ -165,7 +167,7 @@ public class SingleTableInheritanceTest {
         String type1 = list.get(0).getClass().getName();
         String type2 = list.get(1).getClass().getName();
 
-        Assert.assertEquals("Car", type1);
-        Assert.assertEquals("Train", type2);
+        Assert.assertEquals("com.iluwatar.SingleTableInheritance.Car", type1);
+        Assert.assertEquals("com.iluwatar.SingleTableInheritance.Train", type2);
     }
 }

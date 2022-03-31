@@ -16,15 +16,15 @@
             <property name="javax.persistence.jdbc.url" value="jdbc:postgresql://localhost:5432/singletable"/>
             <property name="javax.persistence.jdbc.user" value="postgres" />
             <property name="javax.persistence.jdbc.password" value="postgres" />
-            <property name="hibernate.dialect" value="org.hibernate.dialect.H2Dialect"/>
+<!--            <property name="hibernate.dialect" value="org.hibernate.dialect.H2Dialect"/>-->
             <property name="hibernate.hbm2ddl.auto" value="update" />
-            <property name="show_sql" value="true"/>
-            <property name="hibernate.temp.use_jdbc_metadata_defaults" value="false"/>
-            <property name="hibernate.format_sql" value="true"/>
-            <property name="hibernate.use_sql_comments" value="true"/>
-            <property name="hibernate.connection.release_mode" value="after_transaction" />
-            <property name="hibernate.current_session_context_class" value="jta" />
-            <property name="connection.release_mode" value="auto"/>
+<!--            <property name="show_sql" value="true"/>-->
+<!--            <property name="hibernate.temp.use_jdbc_metadata_defaults" value="false"/>-->
+<!--            <property name="hibernate.format_sql" value="true"/>-->
+<!--            <property name="hibernate.use_sql_comments" value="true"/>-->
+<!--            <property name="hibernate.connection.release_mode" value="after_transaction" />-->
+<!--            <property name="hibernate.current_session_context_class" value="jta" />-->
+<!--            <property name="connection.release_mode" value="auto"/>-->
 
         </properties>
 
