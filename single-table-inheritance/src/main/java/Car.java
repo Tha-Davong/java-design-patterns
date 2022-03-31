@@ -5,14 +5,14 @@ import javax.persistence.Entity;
 @DiscriminatorValue(value = "Car")
 public class Car extends PassengerVehicle {
 
-    private int noOfDoors;
+    private int engineCapacity;
 
-    public int getNoOfDoors() {
-        return noOfDoors;
+    public int getEngineCapacity() {
+        return engineCapacity;
     }
 
-    public void setNoOfDoors(int noOfDoors) {
-        this.noOfDoors = noOfDoors;
+    public void setEngineCapacity(int engineCapacity) {
+        this.engineCapacity = engineCapacity;
     }
 
 }
