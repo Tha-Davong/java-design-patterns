@@ -1,6 +1,7 @@
 package com.iluwatar.SingleTableInheritance;
 
 import org.junit.Assert;
+import org.junit.BeforeClass;
 import org.junit.Test;
 import javax.persistence.*;
 import java.util.List;
@@ -10,7 +11,6 @@ import java.util.List;
  */
 //Run App.java before run the test cases
 public class SingleTableInheritanceTest {
-
     @Test
     public void testAllVehicleTypes() {
 

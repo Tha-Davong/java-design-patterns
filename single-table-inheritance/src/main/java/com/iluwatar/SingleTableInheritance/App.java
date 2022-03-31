@@ -8,6 +8,7 @@ import javax.persistence.Persistence;
 public class App {
     public static void main(String[] args){
         /* Create EntityManagerFactory */
+        //todo: need to find a way for H2 database to persist across function call
         EntityManagerFactory emf = Persistence
                 .createEntityManagerFactory("AdvancedMapping");
 
