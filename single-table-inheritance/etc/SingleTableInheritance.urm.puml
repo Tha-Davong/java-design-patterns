@@ -1,0 +1,54 @@
+@startuml
+package com.iluwatar.SingleTableInheritance {
+  interface Vehicle{
+    - int: idVehicle
+    - String: manufacturer
+    + getmanufacturer(): String
+    + setmanufacturer()
+  }
+  interface TransportationVehicle{
+    - int: loadCapacity
+    + getloadCapacity(): int
+    + setloadCapacity()
+  }
+  interface PassengerVehicle{
+    - int: noOfPassengers
+    + getnoOfPassengers(): int
+    + setnoOfPassengers()
+  }
+  class Car{
+    - int: engineCapacity
+    + getengineCapacity(): int
+    + setengineCapacity()
+  }
+  class PrivateJet{
+    - int: lengthOfPlane
+    + getlengthOfPlane(): int
+    + setlengthOfPlane()
+  }
+  class Ship{
+    - int: weightOfShip
+    + getweightOfShip(): int
+    + setweightOfShip()
+  }
+  class Train{
+    - int: noOfCarriages
+    + getnoOfCarriages(): int
+    + setnoOfCarriages()
+  }
+  class App{
+    - EntityManagerFactory: emf {static}
+    + App()
+    + main(args : String[]) {static}
+    
+  }
+}
+
+TransportationVehicle ..|>  Vehicle
+PassengerVehicle ..|>  Vehicle
+Car ..|> PassengerVehicle
+PrivateJet ..|> PassengerVehicle
+Ship ..|> TransportationVehicle
+Train ..|> TransportationVehicle
+
+@endumll

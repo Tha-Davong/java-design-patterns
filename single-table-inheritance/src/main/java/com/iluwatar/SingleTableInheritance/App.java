@@ -7,12 +7,7 @@ import javax.persistence.Persistence;
 
 public class App {
     public static void main(String[] args){
-        /* Create EntityManagerFactory */
-        //todo: need to find a way for H2 database to persist across function call
-        EntityManagerFactory emf = Persistence
-                .createEntityManagerFactory("AdvancedMapping");
-
-        /* Create EntityManager */
+        EntityManagerFactory emf = Persistence.createEntityManagerFactory("AdvancedMapping");
         EntityManager em = emf.createEntityManager();
         EntityTransaction transaction = em.getTransaction();
         transaction.begin();
@@ -29,7 +24,7 @@ public class App {
         train.setNoOfCarriages(10);
         em.persist(train);
 
-        Airplane airplane = new Airplane();
+        PrivateJet airplane = new PrivateJet();
         airplane.setManufacturer("Boeing");
         airplane.setLoadCapacity(500);
         airplane.setLengthOfPlane(70);
@@ -42,7 +37,6 @@ public class App {
         em.persist(ship);
 
         transaction.commit();
-
         em.close();
         emf.close();
     }

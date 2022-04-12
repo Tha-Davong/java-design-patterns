@@ -6,14 +6,6 @@
     <persistence-unit name="AdvancedMapping">
 
         <properties>
-<!--            <property name="javax.persistence.jdbc.driver" value="org.h2.Driver" />-->
-<!--            <property name="javax.persistence.jdbc.url" value="jdbc:h2:mem:testdb;DB_CLOSE_DELAY=-1"/>-->
-<!--            <property name="javax.persistence.jdbc.user" value="sa" />-->
-<!--            <property name="hbm2ddl.auto" value="create"/>-->
-<!--            <property name="javax.persistence.jdbc.password" value="sa" />-->
-<!--            <property name="hibernate.hbm2ddl.auto" value="update" />-->
-
-
                 <property name="javax.persistence.jdbc.driver" value="org.h2.Driver" />
                 <property name="javax.persistence.jdbc.url"    value="jdbc:h2:~/test;DB_CLOSE_DELAY=-1" />
                 <property name="javax.persistence.jdbc.user" value="sa" />

@@ -4,8 +4,8 @@ import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 
 @Entity
-@DiscriminatorValue(value = "Airplane")
-public class Airplane extends TransportationVehicle{
+@DiscriminatorValue(value = "PrivateJet")
+public class PrivateJet extends TransportationVehicle{
 
     private int lengthOfPlane;
 

@@ -11,31 +11,30 @@ import java.util.List;
  */
 //Run App.java before run the test cases
 public class SingleTableInheritanceTest {
+
     @Test
     public void testAllVehicleTypes() {
 
-        EntityManagerFactory emf = Persistence
-                .createEntityManagerFactory("AdvancedMapping");
+        EntityManagerFactory emf = Persistence.createEntityManagerFactory("AdvancedMapping");
         EntityManager em = emf.createEntityManager();
 
         Query query = em.createNativeQuery("select * from vehicle;", Vehicle.class);
         List<Vehicle> list = query.getResultList();
-        String type1 = list.get(0).getClass().getName();
-        String type2 = list.get(1).getClass().getName();
-        String type3 = list.get(2).getClass().getName();
-        String type4 = list.get(3).getClass().getName();
+        String type1 = list.get(0).getClass().getSimpleName();
+        String type2 = list.get(1).getClass().getSimpleName();
+        String type3 = list.get(2).getClass().getSimpleName();
+        String type4 = list.get(3).getClass().getSimpleName();
 
-        Assert.assertEquals("com.iluwatar.SingleTableInheritance.Car", type1);
-        Assert.assertEquals("com.iluwatar.SingleTableInheritance.Train", type2);
-        Assert.assertEquals("com.iluwatar.SingleTableInheritance.Airplane", type3);
-        Assert.assertEquals("com.iluwatar.SingleTableInheritance.Ship", type4);
+        Assert.assertEquals("Car", type1);
+        Assert.assertEquals("Train", type2);
+        Assert.assertEquals("PrivateJet", type3);
+        Assert.assertEquals("Ship", type4);
     }
 
     @Test
     public void testEqualityOfCar() {
 
-        EntityManagerFactory emf = Persistence
-                .createEntityManagerFactory("AdvancedMapping");
+        EntityManagerFactory emf = Persistence.createEntityManagerFactory("AdvancedMapping");
         EntityManager em = emf.createEntityManager();
 
         Query query = em.createNativeQuery("select * from vehicle where vehicle_type = ?;", Vehicle.class);
@@ -70,15 +69,15 @@ public class SingleTableInheritanceTest {
     }
 
     @Test
-    public void testEqualityOfAirplane() {
+    public void testEqualityOfPrivateJet() {
 
         EntityManagerFactory emf = Persistence
                 .createEntityManagerFactory("AdvancedMapping");
         EntityManager em = emf.createEntityManager();
 
         Query query = em.createNativeQuery("select * from vehicle where vehicle_type = ?;", Vehicle.class);
-        query.setParameter(1, "Airplane");
-        List<Airplane> list = query.getResultList();
+        query.setParameter(1, "PrivateJet");
+        List<PrivateJet> list = query.getResultList();
         String manufacturer = list.get(0).getManufacturer();
         int loadCapacity = list.get(0).getLoadCapacity();
         int length = list.get(0).getLengthOfPlane();
@@ -91,8 +90,7 @@ public class SingleTableInheritanceTest {
     @Test
     public void testEqualityOfShip() {
 
-        EntityManagerFactory emf = Persistence
-                .createEntityManagerFactory("AdvancedMapping");
+        EntityManagerFactory emf = Persistence.createEntityManagerFactory("AdvancedMapping");
         EntityManager em = emf.createEntityManager();
 
         Query query = em.createNativeQuery("select * from vehicle where vehicle_type = ?;", Vehicle.class);
@@ -110,64 +108,60 @@ public class SingleTableInheritanceTest {
     @Test
     public void testPassengerVehicles() {
 
-        EntityManagerFactory emf = Persistence
-                .createEntityManagerFactory("AdvancedMapping");
+        EntityManagerFactory emf = Persistence.createEntityManagerFactory("AdvancedMapping");
         EntityManager em = emf.createEntityManager();
 
         Query query = em.createNativeQuery("select * from vehicle where noofpassengers is not null;", Vehicle.class);
         List<PassengerVehicle> list = query.getResultList();
-        String type1 = list.get(0).getClass().getName();
-        String type2 = list.get(1).getClass().getName();
+        String type1 = list.get(0).getClass().getSimpleName();
+        String type2 = list.get(1).getClass().getSimpleName();
 
-        Assert.assertEquals("com.iluwatar.SingleTableInheritance.Car", type1);
-        Assert.assertEquals("com.iluwatar.SingleTableInheritance.Train", type2);
+        Assert.assertEquals("Car", type1);
+        Assert.assertEquals("Train", type2);
     }
 
     @Test
     public void testNotPassengerVehicles() {
 
-        EntityManagerFactory emf = Persistence
-                .createEntityManagerFactory("AdvancedMapping");
+        EntityManagerFactory emf = Persistence.createEntityManagerFactory("AdvancedMapping");
         EntityManager em = emf.createEntityManager();
 
         Query query = em.createNativeQuery("select * from vehicle where noofpassengers is null;", Vehicle.class);
         List<TransportationVehicle> list = query.getResultList();
-        String type1 = list.get(0).getClass().getName();
-        String type2 = list.get(1).getClass().getName();
+        String type1 = list.get(0).getClass().getSimpleName();
+        String type2 = list.get(1).getClass().getSimpleName();
 
-        Assert.assertEquals("com.iluwatar.SingleTableInheritance.Airplane", type1);
-        Assert.assertEquals("com.iluwatar.SingleTableInheritance.Ship", type2);
+        Assert.assertEquals("PrivateJet", type1);
+        Assert.assertEquals("Ship", type2);
     }
 
     @Test
     public void testTransportationVehicles() {
 
-        EntityManagerFactory emf = Persistence
-                .createEntityManagerFactory("AdvancedMapping");
+        EntityManagerFactory emf = Persistence.createEntityManagerFactory("AdvancedMapping");
         EntityManager em = emf.createEntityManager();
 
         Query query = em.createNativeQuery("select * from vehicle where loadcapacity is not null;", Vehicle.class);
         List<TransportationVehicle> list = query.getResultList();
-        String type1 = list.get(0).getClass().getName();
-        String type2 = list.get(1).getClass().getName();
+        String type1 = list.get(0).getClass().getSimpleName();
+        String type2 = list.get(1).getClass().getSimpleName();
 
-        Assert.assertEquals("com.iluwatar.SingleTableInheritance.Airplane", type1);
-        Assert.assertEquals("com.iluwatar.SingleTableInheritance.Ship", type2);
+        Assert.assertEquals("PrivateJet", type1);
+        Assert.assertEquals("Ship", type2);
     }
 
     @Test
     public void testNotTransportationVehicles() {
 
-        EntityManagerFactory emf = Persistence
-                .createEntityManagerFactory("AdvancedMapping");
+        EntityManagerFactory emf = Persistence.createEntityManagerFactory("AdvancedMapping");
         EntityManager em = emf.createEntityManager();
 
         Query query = em.createNativeQuery("select * from vehicle where loadcapacity is null;", Vehicle.class);
         List<PassengerVehicle> list = query.getResultList();
-        String type1 = list.get(0).getClass().getName();
-        String type2 = list.get(1).getClass().getName();
+        String type1 = list.get(0).getClass().getSimpleName();
+        String type2 = list.get(1).getClass().getSimpleName();
 
-        Assert.assertEquals("com.iluwatar.SingleTableInheritance.Car", type1);
-        Assert.assertEquals("com.iluwatar.SingleTableInheritance.Train", type2);
+        Assert.assertEquals("Car", type1);
+        Assert.assertEquals("Train", type2);
     }
 }

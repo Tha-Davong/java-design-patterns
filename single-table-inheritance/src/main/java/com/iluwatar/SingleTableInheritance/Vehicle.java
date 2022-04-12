@@ -11,7 +11,6 @@ import javax.persistence.Table;
 import javax.persistence.TableGenerator;
 
 @Entity
-
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 @Table(name = "VEHICLE")
 @DiscriminatorColumn(name = "VEHICLE_TYPE")
