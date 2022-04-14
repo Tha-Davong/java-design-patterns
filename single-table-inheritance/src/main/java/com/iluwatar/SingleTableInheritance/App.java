@@ -5,29 +5,44 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
 
-public class App {
-    public static void main(String[] args){
-        EntityManagerFactory emf = Persistence.createEntityManagerFactory("AdvancedMapping");
+/**Singletable inheritance pattern map
+ * each instance of class in an inheritance tree into a single table.
+ */
+final class App {
+    /**
+     * Program main entry point.
+     *
+     * @param args program runtime arguments
+     */
+    public static void main(final String[] args) {
+        EntityManagerFactory emf =
+                Persistence.createEntityManagerFactory("AdvancedMapping");
         EntityManager em = emf.createEntityManager();
         EntityTransaction transaction = em.getTransaction();
         transaction.begin();
 
         Car car = new Car();
         car.setManufacturer("Volkswagen");
-        car.setNoOfPassengers(4);
-        car.setEngineCapacity(1500);
+        final int noOfPassengersCar = 4;
+        final int engineCapacity = 1500;
+        car.setNoOfPassengers(noOfPassengersCar);
+        car.setEngineCapacity(engineCapacity);
         em.persist(car);
 
         Train train = new Train();
         train.setManufacturer("CRRC");
-        train.setNoOfPassengers(200);
-        train.setNoOfCarriages(10);
+        final int noOfPassengersTrain = 200;
+        final int noOfCarriages = 1500;
+        train.setNoOfPassengers(noOfPassengersTrain);
+        train.setNoOfCarriages(noOfCarriages);
         em.persist(train);
 
         PrivateJet airplane = new PrivateJet();
         airplane.setManufacturer("Boeing");
-        airplane.setLoadCapacity(500);
-        airplane.setLengthOfPlane(70);
+        final int loadCapacity = 200;
+        final int lengthOfPlane = 1500;
+        airplane.setLoadCapacity(loadCapacity);
+        airplane.setLengthOfPlane(lengthOfPlane);
         em.persist(airplane);
 
         Ship ship = new Ship();
@@ -40,4 +55,5 @@ public class App {
         em.close();
         emf.close();
     }
+    private App() {}
 }
