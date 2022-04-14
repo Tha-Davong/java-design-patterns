@@ -1,7 +1,6 @@
 package com.iluwatar.SingleTableInheritance;
 
 import org.junit.Assert;
-import org.junit.BeforeClass;
 import org.junit.Test;
 import javax.persistence.*;
 import java.util.List;
@@ -27,7 +26,7 @@ public class SingleTableInheritanceTest {
 
         Assert.assertEquals("Car", type1);
         Assert.assertEquals("Train", type2);
-        Assert.assertEquals("PrivateJet", type3);
+        Assert.assertEquals("Freighter", type3);
         Assert.assertEquals("Ship", type4);
     }
 
@@ -69,15 +68,15 @@ public class SingleTableInheritanceTest {
     }
 
     @Test
-    public void testEqualityOfPrivateJet() {
+    public void testEqualityOfFreighter() {
 
         EntityManagerFactory emf = Persistence
                 .createEntityManagerFactory("AdvancedMapping");
         EntityManager em = emf.createEntityManager();
 
         Query query = em.createNativeQuery("select * from vehicle where vehicle_type = ?;", Vehicle.class);
-        query.setParameter(1, "PrivateJet");
-        List<PrivateJet> list = query.getResultList();
+        query.setParameter(1, "Freighter");
+        List<Freighter> list = query.getResultList();
         String manufacturer = list.get(0).getManufacturer();
         int loadCapacity = list.get(0).getLoadCapacity();
         int length = list.get(0).getLengthOfPlane();
@@ -131,7 +130,7 @@ public class SingleTableInheritanceTest {
         String type1 = list.get(0).getClass().getSimpleName();
         String type2 = list.get(1).getClass().getSimpleName();
 
-        Assert.assertEquals("PrivateJet", type1);
+        Assert.assertEquals("Freighter", type1);
         Assert.assertEquals("Ship", type2);
     }
 
@@ -146,7 +145,7 @@ public class SingleTableInheritanceTest {
         String type1 = list.get(0).getClass().getSimpleName();
         String type2 = list.get(1).getClass().getSimpleName();
 
-        Assert.assertEquals("PrivateJet", type1);
+        Assert.assertEquals("Freighter", type1);
         Assert.assertEquals("Ship", type2);
     }
 

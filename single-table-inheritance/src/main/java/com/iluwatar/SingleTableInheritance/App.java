@@ -32,28 +32,33 @@ final class App {
         Train train = new Train();
         train.setManufacturer("CRRC");
         final int noOfPassengersTrain = 200;
-        final int noOfCarriages = 1500;
+        final int noOfCarriages = 10;
         train.setNoOfPassengers(noOfPassengersTrain);
         train.setNoOfCarriages(noOfCarriages);
         em.persist(train);
 
-        PrivateJet airplane = new PrivateJet();
+        Freighter airplane = new Freighter();
         airplane.setManufacturer("Boeing");
-        final int loadCapacity = 200;
-        final int lengthOfPlane = 1500;
+        final int loadCapacity = 500;
+        final int lengthOfPlane = 70;
         airplane.setLoadCapacity(loadCapacity);
         airplane.setLengthOfPlane(lengthOfPlane);
         em.persist(airplane);
 
         Ship ship = new Ship();
         ship.setManufacturer("Ever Ace");
-        ship.setLoadCapacity(500);
-        ship.setWeightOfShip(220);
+        final int loadCapacityShip = 500;
+        final int weightOfShip = 220;
+        ship.setLoadCapacity(loadCapacityShip);
+        ship.setWeightOfShip(weightOfShip);
         em.persist(ship);
 
         transaction.commit();
         em.close();
         emf.close();
     }
-    private App() {}
+    /**
+     * private constructor so class App can't be instantiated.
+     */
+    private App() { }
 }

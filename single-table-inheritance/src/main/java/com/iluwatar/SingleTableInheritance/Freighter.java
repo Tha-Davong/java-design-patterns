@@ -3,27 +3,28 @@ package com.iluwatar.SingleTableInheritance;
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 
-/**Concrete class of the abstract class PassengerVehicle.
+/**Concrete class of the abstract class TransportationVehicle.
  * The annotation @Entity is used to tell Persistence
  * that this is a concrete class
  */
 @Entity
-@DiscriminatorValue(value = "Train")
-public class Train extends PassengerVehicle {
+@DiscriminatorValue(value = "Freighter")
+public class Freighter extends TransportationVehicle {
     /**class private attribute.
      */
-    private int noOfCarriages;
+    private int lengthOfPlane;
+
     /**get method for private attribute.
      * @return int
      */
-    public int getNoOfCarriages() {
-        return noOfCarriages;
+    public int getLengthOfPlane() {
+        return lengthOfPlane;
     }
     /**set method for private attribute.
      * @param val set value
      */
-    public void setNoOfCarriages(final int val) {
-        this.noOfCarriages = val;
+    public void setLengthOfPlane(final int val) {
+        this.lengthOfPlane = val;
     }
 
 }
