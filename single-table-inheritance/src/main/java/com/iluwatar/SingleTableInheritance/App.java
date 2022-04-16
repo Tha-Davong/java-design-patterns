@@ -15,11 +15,7 @@ final class App {
      * @param args program runtime arguments
      */
     public static void main(final String[] args) {
-        EntityManagerFactory emf =
-                Persistence.createEntityManagerFactory("AdvancedMapping");
-        EntityManager em = emf.createEntityManager();
-        EntityTransaction transaction = em.getTransaction();
-        transaction.begin();
+        VehicleMapper vm = new VehicleMapper();
 
         Car car = new Car();
         car.setManufacturer("Volkswagen");
@@ -27,7 +23,7 @@ final class App {
         final int engineCapacity = 1500;
         car.setNoOfPassengers(noOfPassengersCar);
         car.setEngineCapacity(engineCapacity);
-        em.persist(car);
+        vm.insert(car);
 
         Train train = new Train();
         train.setManufacturer("CRRC");
@@ -35,7 +31,7 @@ final class App {
         final int noOfCarriages = 10;
         train.setNoOfPassengers(noOfPassengersTrain);
         train.setNoOfCarriages(noOfCarriages);
-        em.persist(train);
+        vm.insert(train);
 
         Freighter airplane = new Freighter();
         airplane.setManufacturer("Boeing");
@@ -43,7 +39,7 @@ final class App {
         final int lengthOfPlane = 70;
         airplane.setLoadCapacity(loadCapacity);
         airplane.setLengthOfPlane(lengthOfPlane);
-        em.persist(airplane);
+        vm.insert(airplane);
 
         Ship ship = new Ship();
         ship.setManufacturer("Ever Ace");
@@ -51,11 +47,8 @@ final class App {
         final int weightOfShip = 220;
         ship.setLoadCapacity(loadCapacityShip);
         ship.setWeightOfShip(weightOfShip);
-        em.persist(ship);
+        vm.insert(ship);
 
-        transaction.commit();
-        em.close();
-        emf.close();
     }
     /**
      * private constructor so class App can't be instantiated.
