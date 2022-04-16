@@ -198,4 +198,15 @@ public class SingleTableInheritanceTest {
         Assert.assertEquals(20, updated.getNoOfCarriages());
 
     }
+
+    @Test
+    public void RandomTest(){
+        VehicleMapper vm = new VehicleMapper();
+        Car c = new Car();
+        c.setNoOfPassengers(-1);
+        c.setEngineCapacity(-1);
+        Vehicle v = vm.insert(c);
+        Car found = vm.carMapper.find(v.getIdVehicle());
+        Assert.assertNotNull(found);
+    }
 }

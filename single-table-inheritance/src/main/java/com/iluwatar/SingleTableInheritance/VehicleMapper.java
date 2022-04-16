@@ -2,6 +2,7 @@ package com.iluwatar.SingleTableInheritance;
 
 import javax.persistence.*;
 import java.util.List;
+import java.util.Map;
 
 public class VehicleMapper extends Mapper{
 
@@ -10,53 +11,34 @@ public class VehicleMapper extends Mapper{
     TrainMapper trainMapper = new TrainMapper();
     FreighterMapper freighterMapper = new FreighterMapper();
 
-
-    void update(Vehicle v){
-        Vehicle found = AbstractFind(v.getIdVehicle());
-        if(found != null){
-            EntityManagerFactory emf =
-                    Persistence.createEntityManagerFactory("AdvancedMapping");
-            EntityManager em = emf.createEntityManager();
-            EntityTransaction transaction = em.getTransaction();
-            transaction.begin();
-
-            em.merge(v);
-
-            transaction.commit();
-            em.close();
-            emf.close();
+    AbstractVehicleMapper MapperFor(Vehicle v){
+        if( v instanceof Car){
+            return carMapper;
+        }else if (v instanceof Ship){
+            return shipMapper;
+        }else if (v instanceof Train){
+            return trainMapper;
+        }else if (v instanceof Freighter){
+            return freighterMapper;
+        }else {
+            return null;
         }
     }
 
+    Vehicle update(Vehicle v){
+        Vehicle found = AbstractFind(v.getIdVehicle());
+        if(found != null){
+            MapperFor(v).Update(v);
+            return v;
+        }
+        return null;
+    }
+
     Vehicle insert(Vehicle v){
-        EntityManagerFactory emf =
-                Persistence.createEntityManagerFactory("AdvancedMapping");
-        EntityManager em = emf.createEntityManager();
-        EntityTransaction transaction = em.getTransaction();
-        transaction.begin();
-
-        em.persist(v);
-
-        transaction.commit();
-        em.close();
-        emf.close();
+        MapperFor(v).Insert(v);
         return v;
     }
 
-    void Delete(int id){
-        EntityManagerFactory emf =
-                Persistence.createEntityManagerFactory("AdvancedMapping");
-        EntityManager em = emf.createEntityManager();
-        EntityTransaction transaction = em.getTransaction();
-        transaction.begin();
 
-        Query query = em.createNativeQuery("delete from vehicle where IDVEHICLE = ?;", Vehicle.class);
-        query.setParameter(1, id);
-        query.executeUpdate();
-
-        transaction.commit();
-        em.close();
-        emf.close();
-    }
 
 }
