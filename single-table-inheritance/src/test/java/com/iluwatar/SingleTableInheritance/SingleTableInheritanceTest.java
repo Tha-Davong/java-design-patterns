@@ -163,4 +163,50 @@ public class SingleTableInheritanceTest {
         Assert.assertEquals("Car", type1);
         Assert.assertEquals("Train", type2);
     }
+
+    @Test
+    public void testfind(){
+        VehicleMapper vm = new VehicleMapper();
+        Vehicle v = vm.carMapper.find(1);
+        Assert.assertEquals("Car", v.getClass().getSimpleName());
+        v = vm.trainMapper.find(2);
+        Assert.assertEquals("Train", v.getClass().getSimpleName());
+        v = vm.freighterMapper.find(3);
+        Assert.assertEquals("Freighter", v.getClass().getSimpleName());
+        v = vm.shipMapper.find(4);
+        Assert.assertEquals("Ship", v.getClass().getSimpleName());
+    }
+
+    @Test
+    public void testdelete(){
+        VehicleMapper vm = new VehicleMapper();
+        Vehicle c = vm.insert(new Car());
+        vm.Delete(c.getIdVehicle());
+        Vehicle v = vm.carMapper.find(c.getIdVehicle());
+        Assert.assertNull(v);
+
+    }
+
+    @Test
+    public void testupdate(){
+        VehicleMapper vm = new VehicleMapper();
+        //probably need to get rid of this casting
+        Train t = (Train) vm.insert(new Train());
+        t.setNoOfCarriages(20);
+        vm.update(t);
+        Train updated = vm.trainMapper.find(t.getIdVehicle());
+        Assert.assertEquals(20, updated.getNoOfCarriages());
+
+    }
+
+    @Test
+    public void RandomTest(){
+        VehicleMapper vm = new VehicleMapper();
+        Car c = new Car();
+        c.setNoOfPassengers(-1);
+        c.setEngineCapacity(-1);
+        Vehicle v = vm.insert(c);
+        Car found = vm.carMapper.find(v.getIdVehicle());
+        Assert.assertNotNull(found);
+    }
 }
