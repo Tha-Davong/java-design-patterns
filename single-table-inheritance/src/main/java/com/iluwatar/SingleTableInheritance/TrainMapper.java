@@ -1,9 +1,15 @@
 package com.iluwatar.SingleTableInheritance;
 
+import java.util.List;
+
 public class TrainMapper extends AbstractVehicleMapper<Train>{
-    Train find(int id){
-        Train t = (Train) AbstractFind(id);
-        return t;
+    public Train find(int id){
+        List<Vehicle> rows = AbstractFind(id);
+        return Load(rows);
+    }
+
+    public Train Load(List<Vehicle> rows){
+        return (Train) super.Load(rows);
     }
 
     public Train Update(Vehicle v){

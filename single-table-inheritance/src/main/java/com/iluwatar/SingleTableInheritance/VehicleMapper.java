@@ -26,7 +26,7 @@ public class VehicleMapper extends Mapper{
     }
 
     Vehicle update(Vehicle v){
-        Vehicle found = AbstractFind(v.getIdVehicle());
+        Vehicle found = (Vehicle) MapperFor(v).find(v.getIdVehicle());
         if(found != null){
             MapperFor(v).Update(v);
             return v;
@@ -38,7 +38,4 @@ public class VehicleMapper extends Mapper{
         MapperFor(v).Insert(v);
         return v;
     }
-
-
-
 }

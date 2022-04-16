@@ -1,9 +1,15 @@
 package com.iluwatar.SingleTableInheritance;
 
+import java.util.List;
+
 public class ShipMapper extends AbstractVehicleMapper<Ship>{
-    Ship find(int id) {
-        Ship s = (Ship) AbstractFind(id);
-        return s;
+    public Ship find(int id) {
+        List<Vehicle> rows = AbstractFind(id);
+        return Load(rows);
+    }
+
+    public Ship Load(List<Vehicle> rows){
+        return (Ship) super.Load(rows);
     }
 
     public Ship Update(Vehicle v){
