@@ -1,4 +1,4 @@
-package com.iluwatar.SingleTableInheritance;
+package com.iluwatar.SingleTableInheritance.ClassObject;
 
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
@@ -8,23 +8,22 @@ import javax.persistence.Entity;
  * that this is a concrete class
  */
 @Entity
-@DiscriminatorValue(value = "Car")
-public class Car extends PassengerVehicle {
+@DiscriminatorValue(value = "Train")
+public class Train extends PassengerVehicle {
     /**class private attribute.
      */
-    private int engineCapacity;
-
+    private int noOfCarriages;
     /**get method for private attribute.
      * @return int
      */
-    public int getEngineCapacity() {
-        return engineCapacity;
+    public int getNoOfCarriages() {
+        return noOfCarriages;
     }
     /**set method for private attribute.
      * @param val set value
      */
-    public void setEngineCapacity(final int val) {
-        this.engineCapacity = val;
+    public void setNoOfCarriages(final int val) {
+        this.noOfCarriages = val;
     }
 
 }

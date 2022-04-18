@@ -1,9 +1,7 @@
 package com.iluwatar.SingleTableInheritance;
 
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.EntityTransaction;
-import javax.persistence.Persistence;
+import com.iluwatar.SingleTableInheritance.ClassObject.Vehicle;
+
 import java.util.List;
 
 public abstract class AbstractVehicleMapper<T> extends Mapper{

@@ -1,5 +1,8 @@
 package com.iluwatar.SingleTableInheritance;
 
+import com.iluwatar.SingleTableInheritance.ClassObject.Train;
+import com.iluwatar.SingleTableInheritance.ClassObject.Vehicle;
+
 import java.util.List;
 
 public class TrainMapper extends AbstractVehicleMapper<Train>{

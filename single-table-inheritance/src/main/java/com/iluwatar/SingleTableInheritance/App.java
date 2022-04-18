@@ -1,9 +1,9 @@
 package com.iluwatar.SingleTableInheritance;
 
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.EntityTransaction;
-import javax.persistence.Persistence;
+import com.iluwatar.SingleTableInheritance.ClassObject.Car;
+import com.iluwatar.SingleTableInheritance.ClassObject.Freighter;
+import com.iluwatar.SingleTableInheritance.ClassObject.Ship;
+import com.iluwatar.SingleTableInheritance.ClassObject.Train;
 
 /**Singletable inheritance pattern map
  * each instance of class in an inheritance tree into a single table.

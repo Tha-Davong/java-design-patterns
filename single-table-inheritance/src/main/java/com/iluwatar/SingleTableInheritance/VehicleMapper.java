@@ -1,8 +1,6 @@
 package com.iluwatar.SingleTableInheritance;
 
-import javax.persistence.*;
-import java.util.List;
-import java.util.Map;
+import com.iluwatar.SingleTableInheritance.ClassObject.*;
 
 public class VehicleMapper extends Mapper{
 

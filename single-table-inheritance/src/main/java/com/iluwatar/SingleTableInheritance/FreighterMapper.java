@@ -1,5 +1,8 @@
 package com.iluwatar.SingleTableInheritance;
 
+import com.iluwatar.SingleTableInheritance.ClassObject.Freighter;
+import com.iluwatar.SingleTableInheritance.ClassObject.Vehicle;
+
 import java.util.List;
 
 public class FreighterMapper extends AbstractVehicleMapper<Freighter>{

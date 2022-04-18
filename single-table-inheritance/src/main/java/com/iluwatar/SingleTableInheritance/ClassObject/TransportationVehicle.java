@@ -1,4 +1,4 @@
-package com.iluwatar.SingleTableInheritance;
+package com.iluwatar.SingleTableInheritance.ClassObject;
 
 import javax.persistence.MappedSuperclass;
 
@@ -7,22 +7,23 @@ import javax.persistence.MappedSuperclass;
  * that this is an abstract class
  */
 @MappedSuperclass
-public abstract class PassengerVehicle extends Vehicle {
+public abstract class TransportationVehicle extends Vehicle {
+
     /**class private attribute.
      */
-    private int noOfPassengers;
+    private int loadCapacity;
     /**get method for private attribute.
      * @return int
      */
-    public int getNoOfPassengers() {
-        return noOfPassengers;
+    public int getLoadCapacity() {
+        return loadCapacity;
     }
 
     /**set method for private attribute.
      * @param val set value
      */
-    public void setNoOfPassengers(final int val) {
-        this.noOfPassengers = val;
+    public void setLoadCapacity(final int val) {
+        this.loadCapacity = val;
     }
 
 }

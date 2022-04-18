@@ -1,5 +1,6 @@
 package com.iluwatar.SingleTableInheritance;
 
+import com.iluwatar.SingleTableInheritance.ClassObject.*;
 import org.junit.Assert;
 import org.junit.Test;
 import javax.persistence.*;

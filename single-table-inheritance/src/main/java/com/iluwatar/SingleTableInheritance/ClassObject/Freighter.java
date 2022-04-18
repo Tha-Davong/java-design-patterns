@@ -1,4 +1,4 @@
-package com.iluwatar.SingleTableInheritance;
+package com.iluwatar.SingleTableInheritance.ClassObject;
 
 import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;

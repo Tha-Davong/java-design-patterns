@@ -1,5 +1,7 @@
 package com.iluwatar.SingleTableInheritance;
 
+import com.iluwatar.SingleTableInheritance.ClassObject.Vehicle;
+
 import javax.persistence.*;
 import java.util.List;
 
