@@ -1,6 +1,5 @@
 package com.iluwatar.SingleTableInheritance;
 
-import com.iluwatar.SingleTableInheritance.ClassObject.Car;
 import com.iluwatar.SingleTableInheritance.ClassObject.Train;
 import com.iluwatar.SingleTableInheritance.ClassObject.Vehicle;
 
@@ -13,7 +12,11 @@ public class TrainMapper extends AbstractVehicleMapper<Train>{
     }
 
     public Train Load(List<Vehicle> rows){
-        return (Train) super.Load(rows);
+        Vehicle v = super.Load(rows);
+        if(v instanceof Train)
+            return (Train) v;
+        else
+            return null;
     }
 
     public Train Save(Vehicle v, boolean update){

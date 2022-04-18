@@ -1,15 +1,19 @@
 package com.iluwatar.SingleTableInheritance;
 
-import com.iluwatar.SingleTableInheritance.ClassObject.*;
+import com.iluwatar.SingleTableInheritance.ClassObject.Car;
+import com.iluwatar.SingleTableInheritance.ClassObject.Freighter;
+import com.iluwatar.SingleTableInheritance.ClassObject.Ship;
+import com.iluwatar.SingleTableInheritance.ClassObject.Train;
+import com.iluwatar.SingleTableInheritance.ClassObject.Vehicle;
 
 public class VehicleMapper extends Mapper{
 
-    CarMapper carMapper = new CarMapper();
-    ShipMapper shipMapper = new ShipMapper();
-    TrainMapper trainMapper = new TrainMapper();
-    FreighterMapper freighterMapper = new FreighterMapper();
-    //todo need find method in this class
-    AbstractVehicleMapper MapperFor(Vehicle v){
+    private final CarMapper carMapper = new CarMapper();
+    private final ShipMapper shipMapper = new ShipMapper();
+    private final TrainMapper trainMapper = new TrainMapper();
+    private final FreighterMapper freighterMapper = new FreighterMapper();
+
+    AbstractVehicleMapper<? extends Vehicle> MapperFor(Vehicle v){
         if( v instanceof Car){
             return carMapper;
         }else if (v instanceof Ship){
@@ -24,7 +28,7 @@ public class VehicleMapper extends Mapper{
     }
 
     Vehicle update(Vehicle v){
-        Vehicle found = (Vehicle) MapperFor(v).find(v.getIdVehicle());
+        Vehicle found = MapperFor(v).find(v.getIdVehicle());
         if(found != null){
             MapperFor(v).Update(v);
             return v;
@@ -35,5 +39,21 @@ public class VehicleMapper extends Mapper{
     Vehicle insert(Vehicle v){
         MapperFor(v).Insert(v);
         return v;
+    }
+
+    void Delete(Vehicle v){
+        MapperFor(v).Delete(v);
+    }
+
+    Vehicle find(int id){
+        Vehicle result;
+        result = carMapper.find(id);
+        if(result == null)
+            result = shipMapper.find(id);
+        if(result == null)
+            result = freighterMapper.find(id);
+        if(result == null)
+            result = trainMapper.find(id);
+        return result;
     }
 }

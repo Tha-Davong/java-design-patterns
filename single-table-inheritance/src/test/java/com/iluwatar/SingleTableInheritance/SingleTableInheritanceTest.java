@@ -168,13 +168,13 @@ public class SingleTableInheritanceTest {
     @Test
     public void testfind(){
         VehicleMapper vm = new VehicleMapper();
-        Vehicle v = vm.carMapper.find(1);
+        Vehicle v = vm.find(1);
         Assert.assertEquals("Car", v.getClass().getSimpleName());
-        v = vm.trainMapper.find(2);
+        v = vm.find(2);
         Assert.assertEquals("Train", v.getClass().getSimpleName());
-        v = vm.freighterMapper.find(3);
+        v = vm.find(3);
         Assert.assertEquals("Freighter", v.getClass().getSimpleName());
-        v = vm.shipMapper.find(4);
+        v = vm.find(4);
         Assert.assertEquals("Ship", v.getClass().getSimpleName());
     }
 
@@ -182,8 +182,8 @@ public class SingleTableInheritanceTest {
     public void testdelete(){
         VehicleMapper vm = new VehicleMapper();
         Vehicle c = vm.insert(new Car());
-        vm.Delete(c.getIdVehicle());
-        Vehicle v = vm.carMapper.find(c.getIdVehicle());
+        vm.Delete(c);
+        Vehicle v = vm.find(c.getIdVehicle());
         Assert.assertNull(v);
 
     }
@@ -195,7 +195,7 @@ public class SingleTableInheritanceTest {
         Train t = (Train) vm.insert(new Train());
         t.setNoOfCarriages(20);
         vm.update(t);
-        Train updated = vm.trainMapper.find(t.getIdVehicle());
+        Train updated = (Train) vm.find(t.getIdVehicle());
         Assert.assertEquals(20, updated.getNoOfCarriages());
 
     }
@@ -207,7 +207,7 @@ public class SingleTableInheritanceTest {
         c.setNoOfPassengers(-1);
         c.setEngineCapacity(-1);
         Vehicle v = vm.insert(c);
-        Car found = vm.carMapper.find(v.getIdVehicle());
+        Car found = (Car) vm.find(v.getIdVehicle());
         Assert.assertNotNull(found);
     }
 }

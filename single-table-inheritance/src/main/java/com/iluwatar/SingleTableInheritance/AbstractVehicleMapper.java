@@ -12,7 +12,6 @@ public abstract class AbstractVehicleMapper<T> extends Mapper{
     }
     public Vehicle Load(List<Vehicle> rows){
         return super.Load(rows);
-
     }
     public abstract T Update(Vehicle v);
     public abstract T Insert(Vehicle v);

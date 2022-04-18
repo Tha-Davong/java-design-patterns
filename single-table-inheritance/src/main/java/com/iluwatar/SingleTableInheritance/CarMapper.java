@@ -13,7 +13,11 @@ public class CarMapper extends AbstractVehicleMapper<Car>{
     }
 
     public Car Load(List<Vehicle> rows){
-        return (Car) super.Load(rows);
+        Vehicle v = super.Load(rows);
+        if(v instanceof Car)
+            return (Car) v;
+        else
+            return null;
     }
 
     public Car Save(Vehicle v, boolean update){

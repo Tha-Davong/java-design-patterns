@@ -45,7 +45,7 @@ public abstract class Mapper {
     }
 
 
-    void Delete(int id){
+    void Delete(Vehicle v){
         EntityManagerFactory emf =
                 Persistence.createEntityManagerFactory("AdvancedMapping");
         EntityManager em = emf.createEntityManager();
@@ -53,7 +53,7 @@ public abstract class Mapper {
         transaction.begin();
 
         Query query = em.createNativeQuery("delete from vehicle where IDVEHICLE = ?;", Vehicle.class);
-        query.setParameter(1, id);
+        query.setParameter(1, v.getIdVehicle());
         query.executeUpdate();
 
         transaction.commit();
