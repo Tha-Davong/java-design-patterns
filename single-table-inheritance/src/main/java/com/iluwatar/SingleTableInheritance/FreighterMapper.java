@@ -1,5 +1,6 @@
 package com.iluwatar.SingleTableInheritance;
 
+import com.iluwatar.SingleTableInheritance.ClassObject.Car;
 import com.iluwatar.SingleTableInheritance.ClassObject.Freighter;
 import com.iluwatar.SingleTableInheritance.ClassObject.Vehicle;
 
@@ -15,6 +16,9 @@ public class FreighterMapper extends AbstractVehicleMapper<Freighter>{
         return (Freighter) super.Load(rows);
     }
 
+    public Freighter Save(Vehicle v, boolean update){
+        return (Freighter) super.Save(v, update);
+    }
     public Freighter Update(Vehicle v){
         Save(v, true);
         return (Freighter) v;

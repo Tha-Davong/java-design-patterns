@@ -8,7 +8,7 @@ public class VehicleMapper extends Mapper{
     ShipMapper shipMapper = new ShipMapper();
     TrainMapper trainMapper = new TrainMapper();
     FreighterMapper freighterMapper = new FreighterMapper();
-
+    //todo need find method in this class
     AbstractVehicleMapper MapperFor(Vehicle v){
         if( v instanceof Car){
             return carMapper;

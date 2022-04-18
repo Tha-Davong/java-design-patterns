@@ -1,5 +1,6 @@
 package com.iluwatar.SingleTableInheritance;
 
+import com.iluwatar.SingleTableInheritance.ClassObject.Car;
 import com.iluwatar.SingleTableInheritance.ClassObject.Ship;
 import com.iluwatar.SingleTableInheritance.ClassObject.Vehicle;
 
@@ -13,6 +14,10 @@ public class ShipMapper extends AbstractVehicleMapper<Ship>{
 
     public Ship Load(List<Vehicle> rows){
         return (Ship) super.Load(rows);
+    }
+
+    public Ship Save(Vehicle v, boolean update){
+        return (Ship) super.Save(v, update);
     }
 
     public Ship Update(Vehicle v){
