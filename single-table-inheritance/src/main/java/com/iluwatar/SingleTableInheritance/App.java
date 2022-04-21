@@ -2,7 +2,6 @@ package com.iluwatar.SingleTableInheritance;
 
 import com.iluwatar.SingleTableInheritance.ClassObject.Car;
 import com.iluwatar.SingleTableInheritance.ClassObject.Freighter;
-import com.iluwatar.SingleTableInheritance.ClassObject.Ship;
 import com.iluwatar.SingleTableInheritance.ClassObject.Train;
 
 /**Singletable inheritance pattern map
@@ -40,14 +39,6 @@ final class App {
         airplane.setLoadCapacity(loadCapacity);
         airplane.setLengthOfPlane(lengthOfPlane);
         vm.insert(airplane);
-
-        Ship ship = new Ship();
-        ship.setManufacturer("Ever Ace");
-        final int loadCapacityShip = 500;
-        final int weightOfShip = 220;
-        ship.setLoadCapacity(loadCapacityShip);
-        ship.setWeightOfShip(weightOfShip);
-        vm.insert(ship);
 
     }
     /**
