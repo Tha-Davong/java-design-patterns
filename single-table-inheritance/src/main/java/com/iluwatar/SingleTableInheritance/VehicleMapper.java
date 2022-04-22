@@ -27,7 +27,7 @@ public class VehicleMapper extends Mapper {
      * @param v Vehicle
      * @return Mapper
      */
-    AbstractVehicleMapper<? extends Vehicle> mapperFor(final Vehicle v) {
+    private AbstractVehicleMapper<? extends Vehicle> mapperFor(final Vehicle v) {
         if (v instanceof Car) {
             return carMapper;
         } else if (v instanceof Train) {

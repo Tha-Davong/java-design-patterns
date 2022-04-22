@@ -51,4 +51,6 @@ Use the Single Table Inheritance pattern when
 
 * mapping from objects to relational database without needing join to retrieve data
 
+##Reference
+https://www.martinfowler.com/eaaCatalog/singleTableInheritance.html
 
