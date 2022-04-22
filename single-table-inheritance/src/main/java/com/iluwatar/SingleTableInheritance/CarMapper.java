@@ -5,34 +5,69 @@ import com.iluwatar.SingleTableInheritance.ClassObject.Vehicle;
 
 import java.util.List;
 
-public class CarMapper extends AbstractVehicleMapper<Car>{
+/**
+ * Concrete Mapper for Car class.
+ */
+public class CarMapper extends AbstractVehicleMapper<Car> {
 
-    public Car find(int id){
-        List<Vehicle> rows = AbstractFind(id);
-        return Load(rows);
+    /**
+     * find method for Car class.
+     *
+     * @param id Vehicle id
+     * @return Car
+     */
+    public Car find(final int id) {
+        List<Vehicle> rows = abstractFind(id);
+        return load(rows);
     }
 
-    public Car Load(List<Vehicle> rows){
-        Vehicle v = super.Load(rows);
-        if(v instanceof Car)
+    /**
+     * override load method.
+     *
+     * @param rows a list of Vehicle from database
+     * @return Car
+     */
+    public Car load(final List<Vehicle> rows) {
+        Vehicle v = super.load(rows);
+        if (v instanceof Car) {
             return (Car) v;
-        else
+        } else {
             return null;
+        }
     }
 
-    public Car Save(Vehicle v, boolean update){
-        return (Car) super.Save(v, update);
+    /**
+     * override Save method for database update.
+     *
+     * @param v      Vehicle class object to save
+     * @param update whelther to save as an update or insert
+     * @return Car
+     */
+    public Car save(final Vehicle v, final boolean update) {
+        return (Car) super.save(v, update);
     }
 
-    public Car Update(Vehicle v){
+    /**
+     * update method for Car class.
+     *
+     * @param v Vehicle
+     * @return Car
+     */
+    public Car update(final Vehicle v) {
         Car c = (Car) v;
-        Save(c, true);
+        save(c, true);
         return c;
     }
 
-    public Car Insert(Vehicle v){
+    /**
+     * insert method for Car class.
+     *
+     * @param v Vehicle
+     * @return Car
+     */
+    public Car insert(final Vehicle v) {
         Car c = (Car) v;
-        Save(c, false);
+        save(c, false);
         return c;
     }
 }

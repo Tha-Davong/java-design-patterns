@@ -6,30 +6,67 @@ import com.iluwatar.SingleTableInheritance.ClassObject.Vehicle;
 
 import java.util.List;
 
-public class FreighterMapper extends AbstractVehicleMapper<Freighter>{
-    public Freighter find(int id){
-        List<Vehicle> rows = AbstractFind(id);
-        return Load(rows);
+/**
+ * Concrete Mapper for Freighter class.
+ */
+public class FreighterMapper extends AbstractVehicleMapper<Freighter> {
+    /**
+     * find method for Freighter class.
+     *
+     * @param id Vehicle id
+     * @return Freighter
+     */
+    public Freighter find(final int id) {
+        List<Vehicle> rows = abstractFind(id);
+        return load(rows);
     }
 
-    public Freighter Load(List<Vehicle> rows){
-        Vehicle v = super.Load(rows);
-        if(v instanceof Freighter)
+    /**
+     * override load method.
+     *
+     * @param rows a list of Vehicle from database
+     * @return Freighter
+     */
+    public Freighter load(final List<Vehicle> rows) {
+        Vehicle v = super.load(rows);
+        if (v instanceof Freighter) {
             return (Freighter) v;
-        else
+        } else {
             return null;
+        }
     }
 
-    public Freighter Save(Vehicle v, boolean update){
-        return (Freighter) super.Save(v, update);
+
+    /**
+     * override Save method for database update.
+     *
+     * @param v      Vehicle class object to save
+     * @param update whelther to save as an update or insert
+     * @return Freighter
+     */
+    public Freighter save(final Vehicle v, final boolean update) {
+        return (Freighter) super.save(v, update);
     }
-    public Freighter Update(Vehicle v){
-        Save(v, true);
+
+    /**
+     * update method for Car class.
+     *
+     * @param v Vehicle
+     * @return Freighter
+     */
+    public Freighter update(final Vehicle v) {
+        save(v, true);
         return (Freighter) v;
     }
 
-    public Freighter Insert(Vehicle v){
-        Save(v, false);
+    /**
+     * insert method for Car class.
+     *
+     * @param v Vehicle
+     * @return Freighter
+     */
+    public Freighter insert(final Vehicle v) {
+        save(v, false);
         return (Freighter) v;
     }
 }

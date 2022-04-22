@@ -8,7 +8,7 @@ import org.junit.Test;
  * Unit tests for App class.
  */
 //Run App.java before run the test cases
-public class singleTableInheritanceTest {
+public class SingleTableInheritanceTest {
 
     @Test(expected = NullPointerException.class)
     public void TestNoMapper(){
@@ -33,7 +33,7 @@ public class singleTableInheritanceTest {
     public void testdelete(){
         VehicleMapper vm = new VehicleMapper();
         Vehicle c = vm.insert(new Car());
-        vm.Delete(c);
+        vm.delete(c);
         Vehicle v = vm.find(c.getIdVehicle());
         Assert.assertNull(v);
     }
@@ -80,7 +80,7 @@ public class singleTableInheritanceTest {
     public void testupdateNoVehicleFound(){
         VehicleMapper vm = new VehicleMapper();
         Freighter t = (Freighter) vm.insert(new Freighter());
-        vm.Delete(t);
+        vm.delete(t);
         Vehicle v = vm.update(t);
         Assert.assertNull(v);
     }
