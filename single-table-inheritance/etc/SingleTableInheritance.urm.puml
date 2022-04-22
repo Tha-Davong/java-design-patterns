@@ -1,11 +1,52 @@
 @startuml
 package com.iluwatar.SingleTableInheritance {
+  interface Mapper{
+    + abstractFind(): Vehicle
+    + save(): Vehicle
+    + delete(): Vehicle
+  }
+  interface AbstractVehicleMapper{
+    + save(): Vehicle
+    + load(): Vehicle
+    + update(): Vehicle
+    + insert(): Vehicle
+    + find(): Vehicle
+  }
+class CarMapper{
+    + save(): Car
+    + load(): Car
+    + update(): Car
+    + insert(): Car
+    + find(): Car
+  }
+class TrainMapper{
+    + save(): Train
+    + load(): Train
+    + update(): Train
+    + insert(): Train
+    + find(): Train
+  }
+class FreighterMapper{
+    + save(): Freighter
+    + load(): Freighter
+    + update(): Freighter
+    + insert(): Freighter
+    + find(): Freighter
+  }
+class VehicleMapper{
+    + save(): Vehicle
+    + load(): Vehicle
+    + update(): Vehicle
+    + insert(): Vehicle
+    + find(): Vehicle
+}
   interface Vehicle{
     - int: idVehicle
     - String: manufacturer
     + getmanufacturer(): String
     + setmanufacturer()
   }
+
   interface TransportationVehicle{
     - int: loadCapacity
     + getloadCapacity(): int
@@ -21,15 +62,10 @@ package com.iluwatar.SingleTableInheritance {
     + getengineCapacity(): int
     + setengineCapacity()
   }
-  class PrivateJet{
+  class Freighter{
     - int: lengthOfPlane
     + getlengthOfPlane(): int
     + setlengthOfPlane()
-  }
-  class Ship{
-    - int: weightOfShip
-    + getweightOfShip(): int
-    + setweightOfShip()
   }
   class Train{
     - int: noOfCarriages
@@ -40,15 +76,20 @@ package com.iluwatar.SingleTableInheritance {
     - EntityManagerFactory: emf {static}
     + App()
     + main(args : String[]) {static}
-    
+
   }
 }
 
 TransportationVehicle ..|>  Vehicle
 PassengerVehicle ..|>  Vehicle
 Car ..|> PassengerVehicle
-PrivateJet ..|> PassengerVehicle
-Ship ..|> TransportationVehicle
+Freighter ..|> PassengerVehicle
 Train ..|> TransportationVehicle
-
+Mapper ..|> AbstractVehicleMapper
+AbstractVehicleMapper ..|> CarMapper
+AbstractVehicleMapper ..|> TrainMapper
+AbstractVehicleMapper ..|> FreighterMapper
+VehicleMapper o-- CarMapper
+VehicleMapper o-- TrainMapper
+VehicleMapper o-- FreighterMapper
 @endumll
