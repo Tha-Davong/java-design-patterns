@@ -54,4 +54,4 @@ build/
 #################### VS Code ####################
 .vscode/
 .gitignore
-.data/
+/data/
