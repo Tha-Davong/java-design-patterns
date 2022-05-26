@@ -1,3 +1,1 @@
-add find method to other mapper
-change update method to use find method
-change unit test to use find method
+add README and class diagram

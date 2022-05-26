@@ -1,56 +1,72 @@
-
-
 ## Intent
 
-Map all the fields of classes in an inheritance hierarchy into a single table
+Map all class's attribute to table based on the inheritance scheme chosen
 
 ## Explanation
-Relational database doesn't support inheritance, therefore when we process inherited class, there tend to be significance numbers of join operations.
-Single Table Inheritance ensure that all class in the hierarchy is map to the same table
+In order to capture the inhiritance relationship of class hierarchy in a relational database, three mapping scheme can be us: <br/>
+    - Single Table Inheritance: Map all class in the hierarchy to the same table <br/>
+    - Class Table Inheritance: Each class is map to its own table containing its own attribute (inherited attribute is excluded). Join operation is needed to query object from the database<br/>
+    - Concrete Table Inheritance: Each class is map to its own table containing its own attribute and inherited attribute
 
 ## Class diagram
 
-![alt text](./etc/SingleTableInheritance.png "Single Table Inheritance pattern class diagram")
+![alt text](./etc/InheritanceMapper.png "Single Table Inheritance pattern class diagram")
 
 ## Programmatic Example
+Choosing an Inheritance scheme<br/>
+To pick an Inheritance scheme, uncomment 1 of the following 3 @Inheritance annotation (Concrete Table Inheritance is chosen as an example)<br/>
 
+| Annotation   | Second Header                |
+|--------------|------------------------------|
+| @Inheritance(strategy = InheritanceType.SINGLE_TABLE) | for Single Table Inheritance |
+| @Inheritance(strategy = InheritanceType.JOINED) | for Class Table Inheritance  |
+| @Inheritance(strategy = InheritanceType.TABLE_PER_CLASS) |for Concrete Table Inheritance                |
+```java
+//@Inheritance(strategy = InheritanceType.JOINED)
+//@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
+@Table(name = "Player")
+@DiscriminatorColumn(name = "PLAYER_TYPE")
+public abstract class Player{
+    ...
+}
+```
 Finding object in database
 ```java
-    VehicleMapper vm = new VehicleMapper();
-    Vehicle v = vm.find(1);//1 is the Vehicle id
+    PlayerMapper pm = new PlayerMapper();
+    Player p = pm.find(1);//1 is the Player id
 ```
 Inserting new object into a database
 ```java
-    VehicleMapper vm = new VehicleMapper();
-
-    Car car = new Car();
-    car.setManufacturer("Volkswagen");
-    final int noOfPassengersCar = 4;
-    final int engineCapacity = 1500;
-    car.setNoOfPassengers(noOfPassengersCar);
-    car.setEngineCapacity(engineCapacity);
-    vm.insert(car);
+    PlayerMapper pm = new PlayerMapper();
+    Footballer f = new Footballer();
+    f.setClub("lost apple tree");
+    f.setName("lost apple");
+    pm.insert(f);
 ```
 
 Updating Object in database
 ```java
-    VehicleMapper vm = new VehicleMapper();
-    Train t = (Train) vm.find(t.getIdVehicle());
-    t.setNoOfCarriages(20);
-    vm.update(t);
+    PlayerMapper pm = new PlayerMapper();
+    Footballer f = (Footballer) pm.find(1)
+    f.setName("apple");
+    f.setClub("apple tree")
+    pm.update(f);
 ```
 
 Deleting Object in database
 ```java
-    VehicleMapper vm = new VehicleMapper();
-    Vehicle v = vm.find(1);//1 is the Vehicle id
-    vm.delete(v)
+    PlayerMapper pm = new PlayerMapper();
+    Footballer f = pm.find(1);
+    pm.delete(f);
 ```
 
-Use the Single Table Inheritance pattern when
+Use the Inheritance Mapper pattern when
 
-* mapping from objects to relational database without needing join to retrieve data
+* This is a general pattern use for Single Table Inheritance,  Class Table Inheritance and Concrete Table Inheritance.
+* The usage of this pattern depend on the type of inheritance scheme needed
 
 ## Reference
-https://www.martinfowler.com/eaaCatalog/singleTableInheritance.html
+https://books.google.fi/books?id=vqTfNFDzzdIC&pg=PA303#v=onepage&q&f=false
+
 
